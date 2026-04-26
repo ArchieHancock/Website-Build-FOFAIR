@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Fair Oaks Income Fund — London Stock Exchange Listed Investment Trust</title>
+<meta name="description" content="Fair Oaks Income Fund — a London Stock Exchange listed closed-ended investment company providing exposure to senior secured corporate loan portfolios." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./colors.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: '#004668',
+        green: '#4DB79D',
+        'light-blue': '#99BBD1',
+        'pale-blue-gray': '#DDE8F0',
+        'deep-blue': '#558DB2',
+        'grey-stone': '#CBCFD4',
+        'light-grey': '#F2F2F2',
+        'dark-grey': '#7F7F7F',
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
+      },
+    },
+  },
+};
+</script>
+<style>
+  html, body { font-family: 'DM Sans', system-ui, sans-serif; color: var(--color-text-body); background: var(--color-white); }
+  h1, h2, h3, h4, .font-serif { font-family: 'DM Serif Display', serif; color: var(--color-text-primary); font-weight: 400; letter-spacing: -0.01em; }
+  .num, .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* ===== TYPE SCALE — very generous line-heights so descenders never bleed into the next element ===== */
+  .h-display { font-size: clamp(2.5rem, 5.2vw, 4.25rem); line-height: 1.3;  letter-spacing: -0.02em; padding-bottom: 0.25em; margin-bottom: 0; display: block; overflow: visible; }
+  .h-1       { font-size: clamp(2rem, 3.6vw, 3rem);     line-height: 1.45; padding-bottom: 0.25em; margin-bottom: 0; display: block; overflow: visible; }
+  .h-2       { font-size: clamp(1.5rem, 2.4vw, 2rem);   line-height: 1.5;  padding-bottom: 0.22em; margin-bottom: 0; display: block; overflow: visible; }
+  .h-3       { font-size: 1.25rem;                       line-height: 1.55; padding-bottom: 0.15em; margin-bottom: 0; display: block; overflow: visible; }
+  h1, h2, h3, h4, h5, h6 { overflow: visible; }
+  /* "stack" wrapper enforces real gaps via flexbox — immune to margin collapse */
+  .stack { display: flex; flex-direction: column; }
+  .stack > * { margin-top: 0; margin-bottom: 0; }
+  .stack-sm  { gap: 1.5rem; }
+  .stack-md  { gap: 2rem; }
+  .stack-lg  { gap: 2.75rem; }
+  .stack-xl  { gap: 4rem; }
+  .stack-2xl { gap: 5rem; }
+
+  /* Section-header block (eyebrow + title + lead) — guarantees clearance before any grid below */
+  .section-head { margin-bottom: 4rem; }
+  @media (min-width: 1024px) { .section-head { margin-bottom: 5rem; } }
+
+  /* Force single-line headings on wide screens where requested */
+  @media (min-width: 1024px) { .nowrap-lg { white-space: nowrap; } }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* ======= Video / image hero background ========== */
+  .media-bg {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #002a40;
+  }
+  .media-bg > video,
+  .media-bg > img.media-still {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transform: scale(1.02); /* avoid edge gaps */
+  }
+  /* Brand-tinted overlay — cool teal-navy wash for consistency */
+  .media-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(77,183,157,0.30), transparent 55%),
+      radial-gradient(ellipse at 0% 80%, rgba(85,141,178,0.32), transparent 60%),
+      linear-gradient(180deg, rgba(0,55,85,0.78) 0%, rgba(0,70,104,0.82) 60%, rgba(0,40,60,0.88) 100%);
+    mix-blend-mode: normal;
+  }
+  .media-bg.subtle::before {
+    background:
+      linear-gradient(180deg, rgba(0,55,85,0.55) 0%, rgba(0,70,104,0.62) 100%);
+  }
+  .media-bg.deep::before {
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(77,183,157,0.18), transparent 55%),
+      linear-gradient(180deg, rgba(0,40,60,0.85), rgba(0,30,46,0.92));
+  }
+
+  /* Legacy gradient hero kept for fallback / non-video pages */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(77,183,157,0.18), transparent 55%),
+      radial-gradient(ellipse at 0% 80%, rgba(85,141,178,0.25), transparent 60%),
+      linear-gradient(180deg, #003755 0%, #004668 60%, #00405f 100%);
+  }
+  .grain {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* Tinted still-image strip used as section divider/background */
+  .tinted-still {
+    position: relative; overflow: hidden;
+  }
+  .tinted-still > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .tinted-still::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,70,104,0.75), rgba(0,40,60,0.85));
+  }
+  .tinted-still > * { position: relative; z-index: 1; }
+
+  /* Oak leaf SVG accents */
+  .leaf-bullet::before {
+    content: '';
+    display: inline-block;
+    width: 0.7em; height: 0.7em;
+    margin-right: 0.5em;
+    background: var(--color-green);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2c-3 4-7 6-7 11 0 3 2 6 7 9 5-3 7-6 7-9 0-5-4-7-7-11z'/></svg>") center/contain no-repeat;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2c-3 4-7 6-7 11 0 3 2 6 7 9 5-3 7-6 7-9 0-5-4-7-7-11z'/></svg>") center/contain no-repeat;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.4rem; border-radius: 999px;
+    font-weight: 600; font-size: 0.95rem; line-height: 1;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--color-green); color: #052c23; }
+  .btn-primary:hover { background: #3ea88e; transform: translateY(-1px); }
+  .btn-secondary { background: var(--color-white); color: var(--color-navy); }
+  .btn-secondary:hover { background: var(--color-pale-blue-gray); }
+  .btn-ghost { background: transparent; color: var(--color-white); border-color: rgba(255,255,255,0.25); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+  .btn-outline { background: transparent; color: var(--color-navy); border-color: var(--color-grey-stone); }
+  .btn-outline:hover { border-color: var(--color-navy); }
+
+  /* Cards */
+  .card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -20px rgba(0,70,104,0.2); border-color: var(--color-light-blue); }
+
+  /* Nav */
+  .nav-link { color: var(--color-navy); font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 8px; transition: background 0.2s; }
+  .nav-link:hover { background: var(--color-pale-blue-gray); }
+  .nav-link.active { color: var(--color-navy); background: var(--color-pale-blue-gray); }
+
+  /* Disclaimer overlay */
+  .blurred { filter: blur(14px); pointer-events: none; user-select: none; }
+
+  /* Marquee */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 38s linear infinite; }
+
+  /* Leaf fall animation */
+  @keyframes fall {
+    0% { transform: translate3d(0,-10vh,0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.7; }
+    100% { transform: translate3d(40px,110vh,0) rotate(360deg); opacity: 0; }
+  }
+  .leaf { position: absolute; width: 22px; height: 22px; color: rgba(77,183,157,0.55); animation: fall 14s linear infinite; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* Accordion */
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chev { transform: rotate(180deg); }
+  .chev { transition: transform 0.25s ease; }
+
+  /* Dotted timeline */
+  .timeline-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--color-green); box-shadow: 0 0 0 4px var(--color-pale-blue-gray); }
+
+  /* Form */
+  .input { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-white); font-size: 0.95rem; }
+  .input:focus { outline: none; border-color: var(--color-deep-blue); box-shadow: 0 0 0 3px rgba(85,141,178,0.18); }
+
+  /* Page transition */
+  .page { animation: fadeUp 0.45s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* Section header rhythm — guarantees space between display heading and body text */
+  .section-eyebrow { display:block; font-size:0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 0.85rem; }
+  .section-lead { margin-top: 1.25rem; line-height: 1.7; }
+  /* Breathe room for any heading directly above body text */
+  .h-display + p, .h-1 + p, .h-2 + p, .h-3 + p { margin-top: 1rem; }
+  /* Slightly looser inline links */
+  a { text-underline-offset: 3px; }
+
+  /* Subtle bark texture for dividers */
+  .bark-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-grey-stone) 20%, var(--color-grey-stone) 80%, transparent);
+  }
+
+  /* Filter chips */
+  .chip { padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--color-border); color: var(--color-navy); background: var(--color-white); cursor: pointer; transition: all 0.2s; }
+  .chip:hover { border-color: var(--color-deep-blue); }
+  .chip.active { background: var(--color-navy); color: var(--color-white); border-color: var(--color-navy); }
+
+  /* Stat */
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: clamp(2.25rem, 4vw, 3.25rem); color: var(--color-navy); line-height: 1; }
+</style>
+</head>
+<body class="bg-white text-dark-grey antialiased">
+
+<!-- ========== DISCLAIMER GATE ========== -->
+<div id="disclaimer" class="fixed inset-0 z-[100] hidden items-center justify-center px-4" style="background: rgba(0,30,46,0.72); backdrop-filter: blur(8px);">
+  <div class="card max-w-2xl w-full p-8 md:p-10" style="border-radius: 22px;">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full" style="background: var(--color-pale-blue-gray); color: var(--color-navy);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+      </span>
+      <h2 class="h-2 font-serif">Important Notice</h2>
+    </div>
+    <p class="mb-4 leading-relaxed">
+      This website is intended for <strong>professional and institutional investors only</strong>.
+      The information contained herein does not constitute financial advice and is subject to
+      the Key Risks outlined on this site. Past performance is not a reliable indicator of
+      future results.
+    </p>
+    <p class="mb-6 leading-relaxed">
+      Fair Oaks Income Fund is a closed-ended investment company listed on the London Stock
+      Exchange. By accessing this site you confirm that you have read and accepted the terms
+      below.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button id="accept-btn" class="btn btn-primary flex-1 justify-center">I Accept</button>
+      <button id="reject-btn" class="btn btn-outline flex-1 justify-center">I Do Not Accept</button>
+    </div>
+    <p class="text-xs mt-5" style="color: var(--color-text-muted)">
+      Acceptance is stored for the duration of your browser session only.
+    </p>
+  </div>
+</div>
+
+<!-- ========== SITE WRAPPER ========== -->
+<div id="site">
+
+<!-- ========== TOP NAV ========== -->
+<header id="topnav" class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b" style="border-color: var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-[72px] flex items-center justify-between">
+    <a href="#/" class="flex items-center gap-3">
+      <img src="./Fair Oaks Income Ltd - Blue - SVG.svg" alt="Fair Oaks Income Fund" class="h-9 w-auto" />
+    </a>
+    <nav class="hidden lg:flex items-center gap-1">
+      <a href="#/" data-route="/" class="nav-link">Home</a>
+      <a href="#/about" data-route="/about" class="nav-link">About</a>
+      <a href="#/reports" data-route="/reports" class="nav-link">Reports</a>
+      <a href="#/documentation" data-route="/documentation" class="nav-link">Documentation</a>
+      <a href="#/media" data-route="/media" class="nav-link">Media</a>
+      <a href="#/faqs" data-route="/faqs" class="nav-link">FAQs</a>
+      <a href="#/key-risks" data-route="/key-risks" class="nav-link">Key Risks</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#/contact" class="hidden sm:inline-flex btn btn-primary">Contact</a>
+      <button id="menu-btn" class="lg:hidden p-2 rounded-md" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-navy)"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden hidden border-t" style="border-color: var(--color-grey-stone)">
+    <div class="px-5 py-4 flex flex-col gap-1">
+      <a href="#/" class="nav-link">Home</a>
+      <a href="#/about" class="nav-link">About</a>
+      <a href="#/reports" class="nav-link">Reports</a>
+      <a href="#/documentation" class="nav-link">Documentation</a>
+      <a href="#/media" class="nav-link">Media</a>
+      <a href="#/faqs" class="nav-link">FAQs</a>
+      <a href="#/key-risks" class="nav-link">Key Risks</a>
+      <a href="#/contact" class="nav-link">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========== ROUTER OUTLET ========== -->
+<main id="outlet"></main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="mt-24" style="background: var(--color-navy); color: var(--color-white)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+    <div class="grid lg:grid-cols-4 gap-10">
+      <div>
+        <img src="./Fair Oaks Income Ltd - White - SVG.svg" alt="Fair Oaks Income Fund" class="h-10 w-auto mb-5" />
+        <p class="text-sm leading-relaxed opacity-80 max-w-xs">
+          A closed-ended investment company listed on the London Stock Exchange, providing
+          exposure to senior secured corporate loan portfolios.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4 tracking-wider uppercase opacity-90" style="font-family:'DM Sans'">Investors</h4>
+        <ul class="space-y-2 text-sm opacity-80">
+          <li><a href="#/about" class="hover:opacity-100">About the Fund</a></li>
+          <li><a href="#/reports" class="hover:opacity-100">Reports & Accounts</a></li>
+          <li><a href="#/documentation" class="hover:opacity-100">Documentation</a></li>
+          <li><a href="#/key-risks" class="hover:opacity-100">Key Risks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4 tracking-wider uppercase opacity-90" style="font-family:'DM Sans'">Resources</h4>
+        <ul class="space-y-2 text-sm opacity-80">
+          <li><a href="#/media" class="hover:opacity-100">Media & Announcements</a></li>
+          <li><a href="#/faqs" class="hover:opacity-100">FAQs</a></li>
+          <li><a href="#/contact" class="hover:opacity-100">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4 tracking-wider uppercase opacity-90" style="font-family:'DM Sans'">Legal</h4>
+        <ul class="space-y-2 text-sm opacity-80">
+          <li><a href="#/key-risks" class="hover:opacity-100">Risk Disclosures</a></li>
+          <li><a href="#" class="hover:opacity-100">Privacy Policy</a></li>
+          <li><a href="#" class="hover:opacity-100">Cookie Policy</a></li>
+          <li><a href="#" class="hover:opacity-100">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-8 text-xs opacity-70 leading-relaxed border-t" style="border-color: rgba(255,255,255,0.12)">
+      <p class="mb-2">
+        Fair Oaks Income Limited is a closed-ended investment company incorporated in
+        Guernsey and admitted to trading on the Specialist Fund Segment of the London
+        Stock Exchange. The value of investments and any income from them can fall as
+        well as rise, and investors may not get back the amount originally invested.
+      </p>
+      <p>© <span id="year"></span> Fair Oaks Income Limited. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<!-- ========== TEMPLATES ========== -->
+<template id="page-home">
+<section class="media-bg grain relative overflow-hidden text-white">
+  <video autoplay muted loop playsinline preload="metadata" poster="">
+    <source src="WEBSITE%20VIDEOS/8552294-hd_1920_1080_30fps.mp4" type="video/mp4" />
+  </video>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 pt-24 pb-28 lg:pt-32 lg:pb-36 relative">
+    <div class="max-w-3xl">
+      <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs tracking-wide uppercase" style="background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18)">
+        <span class="w-1.5 h-1.5 rounded-full" style="background: var(--color-green)"></span>
+        London Stock Exchange · Specialist Fund Segment
+      </span>
+      <h1 class="h-display font-serif mt-6" style="color: #fff">Built on roots that run deep.</h1>
+      <p class="mt-6 text-lg lg:text-xl opacity-90 max-w-2xl leading-relaxed">
+        Fair Oaks Income Fund provides exposure to senior secured corporate loan
+        portfolios — a strategy designed for income, resilience, and long-horizon
+        institutional capital.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#/about" class="btn btn-primary">About the Fund</a>
+        <a href="#/reports" class="btn btn-ghost">Latest Reports</a>
+      </div>
+    </div>
+
+    <!-- Hero stat panel -->
+    <div class="mt-16 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden" style="background: rgba(255,255,255,0.12)">
+      <div class="p-6 lg:p-8" style="background: rgba(0,40,60,0.55)">
+        <div class="text-xs uppercase tracking-wider opacity-70">NAV per share</div>
+        <div class="stat-num text-white mt-3">$0.00</div>
+        <div class="text-xs opacity-60 mt-2">As at most recent month-end</div>
+      </div>
+      <div class="p-6 lg:p-8" style="background: rgba(0,40,60,0.55)">
+        <div class="text-xs uppercase tracking-wider opacity-70">Distribution Yield</div>
+        <div class="stat-num text-white mt-3">—%</div>
+        <div class="text-xs opacity-60 mt-2">Trailing 12 months</div>
+      </div>
+      <div class="p-6 lg:p-8" style="background: rgba(0,40,60,0.55)">
+        <div class="text-xs uppercase tracking-wider opacity-70">Portfolio Size</div>
+        <div class="stat-num text-white mt-3">$—m</div>
+        <div class="text-xs opacity-60 mt-2">Net asset value</div>
+      </div>
+      <div class="p-6 lg:p-8" style="background: rgba(0,40,60,0.55)">
+        <div class="text-xs uppercase tracking-wider opacity-70">Listing</div>
+        <div class="stat-num text-white mt-3">FAIR</div>
+        <div class="text-xs opacity-60 mt-2">London Stock Exchange · SFS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trusted by / Listing strip -->
+<section class="py-10 border-y" style="background: var(--color-white); border-color: var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.2em] text-center opacity-70 mb-6" style="color: var(--color-text-body)">Recognised across institutional markets</p>
+    <div class="overflow-hidden">
+      <div class="marquee-track flex items-center gap-16 whitespace-nowrap" style="width: max-content">
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">London Stock Exchange</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">Specialist Fund Segment</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">Guernsey Financial Services Commission</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">UK Listing Authority</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">AIC Member</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">London Stock Exchange</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">Specialist Fund Segment</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">Guernsey Financial Services Commission</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">UK Listing Authority</span>
+        <span class="font-serif text-xl opacity-60" style="color: var(--color-navy)">AIC Member</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three-card overview (Purpose / Approach / Advantage) -->
+<section class="py-24" style="background: var(--color-light-grey)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-4xl section-head reveal">
+      <p class="text-xs uppercase tracking-[0.2em] mb-5" style="color: var(--color-accent-secondary)">The Fund</p>
+      <h2 class="h-1 font-serif" style="white-space: normal;">Purpose, approach, and advantage.</h2>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="card px-8 lg:px-10 pt-12 pb-16 lg:pt-14 lg:pb-28 reveal stack stack-lg">
+        <div class="media-bg subtle aspect-[16/10] rounded-xl overflow-hidden">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="WEBSITE%20VIDEOS/12901736_1920_1080_50fps.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="stack stack-2xl">
+          <span class="text-xs uppercase tracking-[0.18em] block" style="color: var(--color-accent-secondary)">Our Purpose</span>
+          <h3 class="h-2 font-serif">Diversified senior secured exposure.</h3>
+          <p class="leading-relaxed">
+            The Company invests in US and European CLOs and related structures, offering
+            diversified exposure to senior secured loans. By allocating across a range of CLO
+            managers, the portfolio benefits from diversification of credit risk, financing
+            structures, and management styles.
+          </p>
+        </div>
+      </div>
+      <div class="card px-8 lg:px-10 pt-12 pb-16 lg:pt-14 lg:pb-28 reveal stack stack-lg">
+        <div class="media-bg subtle aspect-[16/10] rounded-xl overflow-hidden">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="WEBSITE%20VIDEOS/12683017_2560_1440_25fps.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="stack stack-2xl">
+          <span class="text-xs uppercase tracking-[0.18em] block" style="color: var(--color-accent-secondary)">Our Approach</span>
+          <h3 class="h-2 font-serif">Selective, active, long-horizon.</h3>
+          <p class="leading-relaxed">
+            We seek to enhance returns through active involvement in transactions, the ability
+            to exercise control rights as an independent investor, and tactical deployment of
+            long-term capital. The Fund is not obliged to participate in any specific CLO deal,
+            enabling selective investment in the most attractive opportunities across primary
+            and secondary markets, including CLO debt.
+          </p>
+        </div>
+      </div>
+      <div class="card px-8 lg:px-10 pt-12 pb-16 lg:pt-14 lg:pb-28 reveal stack stack-lg">
+        <div class="media-bg subtle aspect-[16/10] rounded-xl overflow-hidden">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="WEBSITE%20VIDEOS/8552294-hd_1920_1080_30fps.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="stack stack-2xl">
+          <span class="text-xs uppercase tracking-[0.18em] block" style="color: var(--color-accent-secondary)">Our Advantage</span>
+          <h3 class="h-2 font-serif">Aligned, employee-owned advisor.</h3>
+          <p class="leading-relaxed">
+            Fair Oaks Income Limited is advised by Fair Oaks Capital, an employee-owned firm
+            whose interests are closely aligned with those of its investors. The firm's
+            principals are significant co-investors alongside shareholders, ensuring alignment
+            and commitment to performance. The Company also employs proactive measures to
+            enhance transparency and manage discount volatility.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feature grid (5 columns) -->
+<section class="py-28" style="background: var(--color-white)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="section-head reveal stack stack-md">
+      <p class="text-xs uppercase tracking-[0.2em]" style="color: var(--color-accent-secondary)">A long-rooted approach</p>
+      <h2 class="h-1 font-serif nowrap-lg">Strength, longevity, and clarity at every layer.</h2>
+      <p class="leading-relaxed max-w-2xl">
+        Each pillar of the fund is designed to perform like the oak it is named for — solid
+        in foundation, transparent in structure, enduring through cycles.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+      <!-- 5 features -->
+      <div class="card p-6 reveal">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M5 9h14"/><path d="M5 15h14"/></svg>
+        </div>
+        <h4 class="h-3 font-serif">Senior Secured</h4>
+        <p class="text-sm mt-2 leading-relaxed">Priority position in corporate capital structures.</p>
+      </div>
+      <div class="card p-6 reveal">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+        </div>
+        <h4 class="h-3 font-serif">Floating Rate</h4>
+        <p class="text-sm mt-2 leading-relaxed">Income that adjusts with prevailing interest rates.</p>
+      </div>
+      <div class="card p-6 reveal">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/><path d="M12 2a15 15 0 0 0 0 20"/></svg>
+        </div>
+        <h4 class="h-3 font-serif">Diversified</h4>
+        <p class="text-sm mt-2 leading-relaxed">Hundreds of underlying obligors across industries.</p>
+      </div>
+      <div class="card p-6 reveal">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7l3-7z"/></svg>
+        </div>
+        <h4 class="h-3 font-serif">Institutional</h4>
+        <p class="text-sm mt-2 leading-relaxed">Built and reported to professional standards.</p>
+      </div>
+      <div class="card p-6 reveal">
+        <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12V5l8-3 8 3v5c0 7.5-8 12-8 12z"/></svg>
+        </div>
+        <h4 class="h-3 font-serif">Listed Vehicle</h4>
+        <p class="text-sm mt-2 leading-relaxed">Daily liquidity on the London Stock Exchange.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured-content alternating block -->
+<section class="py-40" style="background: var(--color-bg-section-alt)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="reveal flex flex-col">
+      <div class="stack stack-sm">
+        <p class="text-xs uppercase tracking-[0.2em]" style="color: var(--color-accent-secondary)">Income through cycles</p>
+        <h2 class="h-1 font-serif">A discipline as patient as a forest.</h2>
+      </div>
+      <div class="stack stack-sm" style="margin-top: 9rem;">
+        <p class="leading-relaxed">
+          The fund's investment manager applies a credit-led, cycle-aware framework — focusing
+          on capital structure seniority, sector dispersion, and underwriting discipline. The
+          result is a strategy designed to behave like the trees that inspire its name: rooted,
+          steady, and resilient through changing conditions.
+        </p>
+        <ul class="space-y-3 text-[15px]">
+          <li class="leaf-bullet">Senior secured loan exposures with priority claim</li>
+          <li class="leaf-bullet">Active credit monitoring across hundreds of obligors</li>
+          <li class="leaf-bullet">Quarterly distributions to ordinary shareholders</li>
+        </ul>
+      </div>
+      <a href="#/about" class="btn btn-secondary self-start" style="margin-top: 3rem;">Read more about the fund</a>
+    </div>
+    <div class="reveal">
+      <div class="card p-6 lg:p-8">
+        <div class="flex items-center justify-between mb-6">
+          <span class="text-xs uppercase tracking-wider" style="color: var(--color-text-muted)">Quarterly distribution</span>
+          <span class="text-xs px-2 py-1 rounded-full" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">Illustrative</span>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+          <div class="text-center">
+            <div class="h-44 rounded-lg flex items-end justify-center" style="background: linear-gradient(180deg, transparent, rgba(85,141,178,0.18))">
+              <div class="w-full rounded-t-md" style="height: 55%; background: var(--color-deep-blue)"></div>
+            </div>
+            <div class="text-xs mt-2 mono" style="color: var(--color-text-muted)">Q1</div>
+          </div>
+          <div class="text-center">
+            <div class="h-44 rounded-lg flex items-end justify-center" style="background: linear-gradient(180deg, transparent, rgba(85,141,178,0.18))">
+              <div class="w-full rounded-t-md" style="height: 70%; background: var(--color-deep-blue)"></div>
+            </div>
+            <div class="text-xs mt-2 mono" style="color: var(--color-text-muted)">Q2</div>
+          </div>
+          <div class="text-center">
+            <div class="h-44 rounded-lg flex items-end justify-center" style="background: linear-gradient(180deg, transparent, rgba(85,141,178,0.18))">
+              <div class="w-full rounded-t-md" style="height: 65%; background: var(--color-green)"></div>
+            </div>
+            <div class="text-xs mt-2 mono" style="color: var(--color-text-muted)">Q3</div>
+          </div>
+          <div class="text-center">
+            <div class="h-44 rounded-lg flex items-end justify-center" style="background: linear-gradient(180deg, transparent, rgba(85,141,178,0.18))">
+              <div class="w-full rounded-t-md" style="height: 80%; background: var(--color-green)"></div>
+            </div>
+            <div class="text-xs mt-2 mono" style="color: var(--color-text-muted)">Q4</div>
+          </div>
+        </div>
+        <p class="text-xs mt-5 leading-relaxed" style="color: var(--color-text-muted)">
+          Indicative chart only — actual distributions vary by share class and period. See latest
+          factsheet for current data.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Three case-study / report cards -->
+<section class="py-24" style="background: var(--color-white)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 section-head reveal">
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] mb-5" style="color: var(--color-accent-secondary)">Latest reporting</p>
+        <h2 class="h-1 font-serif nowrap-lg">Transparency, by every measure.</h2>
+      </div>
+      <a href="#/reports" class="btn btn-outline">View all reports</a>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="#/reports" class="card p-6 group">
+        <div class="aspect-[4/3] rounded-lg mb-5" style="background: linear-gradient(135deg, var(--color-pale-blue-gray), var(--color-light-blue))"></div>
+        <span class="text-xs uppercase tracking-wider" style="color: var(--color-accent-secondary)">Factsheet</span>
+        <h3 class="h-3 font-serif mt-2">Latest Monthly Factsheet</h3>
+        <p class="text-sm mt-2 leading-relaxed">A summary of NAV, distributions, and portfolio statistics.</p>
+      </a>
+      <a href="#/reports" class="card p-6 group">
+        <div class="aspect-[4/3] rounded-lg mb-5" style="background: linear-gradient(135deg, var(--color-light-blue), var(--color-deep-blue))"></div>
+        <span class="text-xs uppercase tracking-wider" style="color: var(--color-accent-secondary)">Interim</span>
+        <h3 class="h-3 font-serif mt-2">Interim Financial Report</h3>
+        <p class="text-sm mt-2 leading-relaxed">Half-year results, commentary, and investment manager review.</p>
+      </a>
+      <a href="#/reports" class="card p-6 group">
+        <div class="aspect-[4/3] rounded-lg mb-5" style="background: linear-gradient(135deg, var(--color-green), var(--color-deep-blue))"></div>
+        <span class="text-xs uppercase tracking-wider" style="color: var(--color-accent-secondary)">Annual</span>
+        <h3 class="h-3 font-serif mt-2">Annual Report & Accounts</h3>
+        <p class="text-sm mt-2 leading-relaxed">Audited financial statements with full disclosures.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline / milestones -->
+<section class="py-24" style="background: var(--color-light-grey)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="max-w-2xl section-head reveal">
+      <p class="text-xs uppercase tracking-[0.2em] mb-5" style="color: var(--color-accent-secondary)">A decade of stewardship</p>
+      <h2 class="h-1 font-serif">Milestones that mark the rings.</h2>
+    </div>
+    <div class="relative">
+      <div class="absolute left-[7px] md:left-1/2 md:-translate-x-1/2 top-2 bottom-2 w-px" style="background: var(--color-grey-stone)"></div>
+      <div class="space-y-10">
+        <div class="grid md:grid-cols-2 gap-6 items-center reveal">
+          <div class="md:text-right md:pr-10">
+            <div class="text-xs mono" style="color: var(--color-text-muted)">2014</div>
+            <h4 class="h-3 font-serif mt-1">Listing on the London Stock Exchange</h4>
+            <p class="text-sm mt-2">Admission to the Specialist Fund Segment.</p>
+          </div>
+          <div class="relative pl-10 md:pl-10">
+            <div class="absolute left-0 top-2 timeline-dot"></div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-center reveal">
+          <div class="md:order-2 md:pl-10">
+            <div class="text-xs mono" style="color: var(--color-text-muted)">2017</div>
+            <h4 class="h-3 font-serif mt-1">Master Fund III launched</h4>
+            <p class="text-sm mt-2">Continuation of the income strategy through new vintages.</p>
+          </div>
+          <div class="md:order-1 relative md:flex md:justify-end pl-10 md:pl-0">
+            <div class="absolute left-0 md:left-auto md:right-[-7px] top-2 timeline-dot"></div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-center reveal">
+          <div class="md:text-right md:pr-10">
+            <div class="text-xs mono" style="color: var(--color-text-muted)">2020</div>
+            <h4 class="h-3 font-serif mt-1">Resilience through market dislocation</h4>
+            <p class="text-sm mt-2">Continued distributions paid through pandemic-era volatility.</p>
+          </div>
+          <div class="relative pl-10 md:pl-10">
+            <div class="absolute left-0 top-2 timeline-dot"></div>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-center reveal">
+          <div class="md:order-2 md:pl-10">
+            <div class="text-xs mono" style="color: var(--color-text-muted)">2024</div>
+            <h4 class="h-3 font-serif mt-1">Decade of distributions</h4>
+            <p class="text-sm mt-2">Ten years of quarterly income to ordinary shareholders.</p>
+          </div>
+          <div class="md:order-1 relative md:flex md:justify-end pl-10 md:pl-0">
+            <div class="absolute left-0 md:left-auto md:right-[-7px] top-2 timeline-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Safety / Compliance trio -->
+<section class="py-24" style="background: var(--color-white)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="section-head reveal">
+      <p class="text-xs uppercase tracking-[0.2em] mb-5" style="color: var(--color-accent-secondary)">Built on trust</p>
+      <h2 class="h-1 font-serif nowrap-lg">Compliance, governance, and clarity at the core.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12V5l8-3 8 3v5c0 7.5-8 12-8 12z"/></svg>
+        </div>
+        <h3 class="h-3 font-serif">Regulated</h3>
+        <p class="text-sm mt-3 leading-relaxed">Authorised and supervised by the Guernsey Financial Services Commission.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3 class="h-3 font-serif">Independent Board</h3>
+        <p class="text-sm mt-3 leading-relaxed">Majority-independent directors providing oversight on behalf of shareholders.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3 class="h-3 font-serif">Transparent Reporting</h3>
+        <p class="text-sm mt-3 leading-relaxed">Monthly factsheets, interim and audited annual reports — all publicly available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="media-bg deep py-36 text-white">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="WEBSITE%20VIDEOS/12683017_2560_1440_25fps.mp4" type="video/mp4" />
+  </video>
+  <div class="max-w-5xl mx-auto px-5 lg:px-8 text-center relative stack stack-lg items-center">
+    <h2 class="h-1 font-serif" style="color: #fff">Roots that hold. Income that lasts.</h2>
+    <p class="max-w-2xl opacity-90 leading-relaxed text-lg">
+      Speak to the team to learn more about Fair Oaks Income Fund, request the latest reports,
+      or sign up for shareholder communications.
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="#/contact" class="btn btn-primary">Contact the team</a>
+      <a href="#/reports" class="btn btn-ghost">Download factsheet</a>
+    </div>
+  </div>
+</section>
+</template>
+
+<template id="page-about">
+<section class="media-bg text-white">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="WEBSITE%20VIDEOS/12901736_1920_1080_50fps.mp4" type="video/mp4" />
+  </video>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 pt-10 pb-14 lg:pt-14 lg:pb-16 relative">
+    <p class="text-xs uppercase tracking-[0.25em] opacity-90">About Fair Oaks Income Fund</p>
+    <h1 class="h-display font-serif mt-4" style="color: #fff">An income strategy with deep roots.</h1>
+    <p class="mt-5 max-w-2xl text-lg opacity-95 leading-relaxed">
+      Fair Oaks Income Fund is a closed-ended investment company listed on the Specialist
+      Fund Segment of the London Stock Exchange. The fund provides exposure to senior
+      secured corporate loan portfolios.
+    </p>
+  </div>
+</section>
+
+<section class="py-20 lg:py-24" style="background: var(--color-white)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-3 gap-12">
+    <div class="lg:col-span-2 stack stack-xl">
+      <div class="stack stack-md">
+        <h2 class="h-1 font-serif">The Fund</h2>
+        <p class="leading-relaxed">
+          Fair Oaks Income Limited was admitted to trading on the Specialist Fund Segment of
+          the London Stock Exchange in 2014. The company seeks to provide ordinary shareholders
+          with stable, attractive returns by way of quarterly distributions, with the
+          opportunity for capital growth through exposure to portfolios of corporate loans.
+        </p>
+        <p class="leading-relaxed">
+          The fund is managed by an experienced credit team focused exclusively on senior
+          secured corporate loans — an asset class characterised by priority position in the
+          capital structure, security against borrower assets, and floating-rate income.
+        </p>
+      </div>
+
+      <div class="stack stack-md">
+        <h3 class="h-2 font-serif">Investment objective</h3>
+        <p class="leading-relaxed">
+          The investment objective is to generate stable returns with the potential for capital
+          appreciation through exposure to senior secured corporate loan portfolios. The fund
+          targets quarterly distributions to ordinary shareholders.
+        </p>
+      </div>
+
+      <div class="stack stack-md">
+        <h3 class="h-2 font-serif">Investment policy</h3>
+        <ul class="space-y-3">
+          <li class="leaf-bullet leading-relaxed">Predominantly senior secured corporate loan exposures.</li>
+          <li class="leaf-bullet leading-relaxed">Diversification across hundreds of underlying obligors.</li>
+          <li class="leaf-bullet leading-relaxed">Active credit selection and ongoing portfolio monitoring.</li>
+          <li class="leaf-bullet leading-relaxed">Quarterly income distributions to ordinary shareholders.</li>
+        </ul>
+      </div>
+    </div>
+    <aside class="space-y-4">
+      <div class="card p-6">
+        <h4 class="h-3 font-serif">Key Facts</h4>
+        <dl class="mt-4 text-sm divide-y" style="border-color: var(--color-grey-stone)">
+          <div class="flex justify-between py-2"><dt style="color: var(--color-text-muted)">Listing</dt><dd class="mono">LSE / SFS</dd></div>
+          <div class="flex justify-between py-2"><dt style="color: var(--color-text-muted)">Ticker</dt><dd class="mono">FAIR</dd></div>
+          <div class="flex justify-between py-2"><dt style="color: var(--color-text-muted)">Domicile</dt><dd>Guernsey</dd></div>
+          <div class="flex justify-between py-2"><dt style="color: var(--color-text-muted)">Currency</dt><dd>USD / GBP</dd></div>
+          <div class="flex justify-between py-2"><dt style="color: var(--color-text-muted)">Structure</dt><dd>Closed-ended</dd></div>
+          <div class="flex justify-between py-2"><dt style="color: var(--color-text-muted)">Year of Admission</dt><dd class="mono">2014</dd></div>
+        </dl>
+      </div>
+      <div class="card p-6">
+        <h4 class="h-3 font-serif">Service Providers</h4>
+        <ul class="mt-3 text-sm space-y-2">
+          <li><span style="color: var(--color-text-muted)">Investment Manager:</span> [Placeholder]</li>
+          <li><span style="color: var(--color-text-muted)">Administrator:</span> [Placeholder]</li>
+          <li><span style="color: var(--color-text-muted)">Auditor:</span> [Placeholder]</li>
+          <li><span style="color: var(--color-text-muted)">Broker:</span> [Placeholder]</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="py-20" style="background: var(--color-bg-section-alt)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 stack stack-lg">
+    <div class="stack stack-md">
+      <h2 class="h-1 font-serif">Board of Directors</h2>
+      <p class="max-w-2xl leading-relaxed">
+        The board comprises independent non-executive directors with significant experience
+        in investment management, financial services and listed funds.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6"><div class="w-16 h-16 rounded-full mb-5" style="background: var(--color-pale-blue-gray)"></div><h4 class="h-3 font-serif">Director Name</h4><p class="text-sm mt-2" style="color: var(--color-text-muted)">Chair, Independent</p><p class="text-sm mt-4 leading-relaxed">[Placeholder biography — replace with director profile.]</p></div>
+      <div class="card p-6"><div class="w-16 h-16 rounded-full mb-5" style="background: var(--color-pale-blue-gray)"></div><h4 class="h-3 font-serif">Director Name</h4><p class="text-sm mt-2" style="color: var(--color-text-muted)">Independent Director</p><p class="text-sm mt-4 leading-relaxed">[Placeholder biography — replace with director profile.]</p></div>
+      <div class="card p-6"><div class="w-16 h-16 rounded-full mb-5" style="background: var(--color-pale-blue-gray)"></div><h4 class="h-3 font-serif">Director Name</h4><p class="text-sm mt-2" style="color: var(--color-text-muted)">Independent Director</p><p class="text-sm mt-4 leading-relaxed">[Placeholder biography — replace with director profile.]</p></div>
+    </div>
+  </div>
+</section>
+</template>
+
+<template id="page-reports">
+<section class="py-16 lg:py-20" style="background: var(--color-white); border-bottom: 1px solid var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.25em]" style="color: var(--color-accent-secondary)">Reports & Accounts</p>
+    <h1 class="h-display font-serif mt-3">Reports library.</h1>
+    <p class="mt-5 max-w-2xl leading-relaxed">
+      Monthly factsheets, interim reports, annual reports and audited accounts. Filter by
+      year and type, or browse the full archive below.
+    </p>
+  </div>
+</section>
+
+<section class="py-12" style="background: var(--color-light-grey)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex flex-wrap gap-2 mb-3">
+      <span class="text-xs uppercase tracking-wider mr-2 self-center" style="color: var(--color-text-muted)">Type</span>
+      <button class="chip active" data-filter-type="all">All</button>
+      <button class="chip" data-filter-type="factsheet">Factsheet</button>
+      <button class="chip" data-filter-type="interim">Interim</button>
+      <button class="chip" data-filter-type="annual">Annual</button>
+      <button class="chip" data-filter-type="circular">Circular</button>
+    </div>
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="text-xs uppercase tracking-wider mr-2 self-center" style="color: var(--color-text-muted)">Year</span>
+      <button class="chip active" data-filter-year="all">All</button>
+      <button class="chip" data-filter-year="2025">2025</button>
+      <button class="chip" data-filter-year="2024">2024</button>
+      <button class="chip" data-filter-year="2023">2023</button>
+      <button class="chip" data-filter-year="2022">2022</button>
+    </div>
+
+    <div id="reports-list" class="grid md:grid-cols-2 gap-4">
+      <!-- populated by script -->
+    </div>
+  </div>
+</section>
+</template>
+
+<template id="page-documentation">
+<section class="py-16 lg:py-20" style="background: var(--color-white); border-bottom: 1px solid var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.25em]" style="color: var(--color-accent-secondary)">Documentation</p>
+    <h1 class="h-display font-serif mt-3">Constitutional and offering documents.</h1>
+    <p class="mt-5 max-w-2xl leading-relaxed">
+      The fund's prospectus, articles of incorporation, key information documents and
+      governance materials.
+    </p>
+  </div>
+</section>
+<section class="py-16" style="background: var(--color-light-grey)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-2 gap-4">
+    <a href="#" class="card p-6 flex items-center gap-5">
+      <div class="w-12 h-14 rounded-md flex items-center justify-center" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="h-3 font-serif">Prospectus</h3>
+        <p class="text-sm" style="color: var(--color-text-muted)">PDF · Most recent edition</p>
+      </div>
+      <span style="color: var(--color-accent-secondary)">↓</span>
+    </a>
+    <a href="#" class="card p-6 flex items-center gap-5">
+      <div class="w-12 h-14 rounded-md flex items-center justify-center" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="h-3 font-serif">Articles of Incorporation</h3>
+        <p class="text-sm" style="color: var(--color-text-muted)">PDF · Constitutional document</p>
+      </div>
+      <span style="color: var(--color-accent-secondary)">↓</span>
+    </a>
+    <a href="#" class="card p-6 flex items-center gap-5">
+      <div class="w-12 h-14 rounded-md flex items-center justify-center" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="h-3 font-serif">Key Information Document (KID)</h3>
+        <p class="text-sm" style="color: var(--color-text-muted)">PDF · PRIIPs disclosure</p>
+      </div>
+      <span style="color: var(--color-accent-secondary)">↓</span>
+    </a>
+    <a href="#" class="card p-6 flex items-center gap-5">
+      <div class="w-12 h-14 rounded-md flex items-center justify-center" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="h-3 font-serif">Investment Management Agreement</h3>
+        <p class="text-sm" style="color: var(--color-text-muted)">PDF · Summary</p>
+      </div>
+      <span style="color: var(--color-accent-secondary)">↓</span>
+    </a>
+    <a href="#" class="card p-6 flex items-center gap-5">
+      <div class="w-12 h-14 rounded-md flex items-center justify-center" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="h-3 font-serif">Governance & Audit Committee Terms</h3>
+        <p class="text-sm" style="color: var(--color-text-muted)">PDF · Board policies</p>
+      </div>
+      <span style="color: var(--color-accent-secondary)">↓</span>
+    </a>
+    <a href="#" class="card p-6 flex items-center gap-5">
+      <div class="w-12 h-14 rounded-md flex items-center justify-center" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </div>
+      <div class="flex-1">
+        <h3 class="h-3 font-serif">AGM Notices & Circulars</h3>
+        <p class="text-sm" style="color: var(--color-text-muted)">PDF · Shareholder communications</p>
+      </div>
+      <span style="color: var(--color-accent-secondary)">↓</span>
+    </a>
+  </div>
+</section>
+</template>
+
+<template id="page-media">
+<section class="py-16 lg:py-20" style="background: var(--color-white); border-bottom: 1px solid var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.25em]" style="color: var(--color-accent-secondary)">Media</p>
+    <h1 class="h-display font-serif mt-3">Announcements & press.</h1>
+    <p class="mt-5 max-w-2xl leading-relaxed">
+      Regulatory news, press releases and shareholder updates from Fair Oaks Income Fund.
+    </p>
+  </div>
+</section>
+<section class="py-12" style="background: var(--color-light-grey)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="flex flex-wrap gap-2 mb-8">
+      <button class="chip active" data-media-filter="all">All</button>
+      <button class="chip" data-media-filter="rns">RNS</button>
+      <button class="chip" data-media-filter="press">Press</button>
+      <button class="chip" data-media-filter="dividend">Dividends</button>
+      <button class="chip" data-media-filter="nav">NAV</button>
+    </div>
+    <div id="media-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- populated by script -->
+    </div>
+  </div>
+</section>
+</template>
+
+<template id="page-contact">
+<section class="py-16 lg:py-20" style="background: var(--color-white); border-bottom: 1px solid var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.25em]" style="color: var(--color-accent-secondary)">Contact</p>
+    <h1 class="h-display font-serif mt-3">Get in touch.</h1>
+    <p class="mt-5 max-w-2xl leading-relaxed">
+      Investor relations, media, and shareholder enquiries — please use the form below or
+      the contact details listed.
+    </p>
+  </div>
+</section>
+<section class="py-16" style="background: var(--color-light-grey)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-3 gap-10">
+    <div class="lg:col-span-2">
+      <form id="contact-form" class="card p-7 space-y-5">
+        <div class="grid md:grid-cols-2 gap-5">
+          <div>
+            <label class="text-sm font-medium block mb-2" style="color: var(--color-navy)">Full name</label>
+            <input class="input" name="name" required />
+          </div>
+          <div>
+            <label class="text-sm font-medium block mb-2" style="color: var(--color-navy)">Email</label>
+            <input class="input" type="email" name="email" required />
+          </div>
+        </div>
+        <div>
+          <label class="text-sm font-medium block mb-2" style="color: var(--color-navy)">Organisation</label>
+          <input class="input" name="org" />
+        </div>
+        <div>
+          <label class="text-sm font-medium block mb-2" style="color: var(--color-navy)">Enquiry type</label>
+          <select class="input" name="type" required>
+            <option>Investor relations</option>
+            <option>Media</option>
+            <option>Shareholder services</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-sm font-medium block mb-2" style="color: var(--color-navy)">Message</label>
+          <textarea class="input" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+        <div id="form-status" class="text-sm hidden"></div>
+      </form>
+    </div>
+    <aside class="space-y-4">
+      <div class="card p-6">
+        <h4 class="h-3 font-serif">Investor Relations</h4>
+        <p class="text-sm mt-3" style="color: var(--color-text-muted)">For shareholder queries</p>
+        <p class="mt-2"><a href="mailto:ir@fairoaksincome.example" style="color: var(--color-accent-secondary)">ir@fairoaksincome.example</a></p>
+      </div>
+      <div class="card p-6">
+        <h4 class="h-3 font-serif">Media</h4>
+        <p class="text-sm mt-3" style="color: var(--color-text-muted)">For press enquiries</p>
+        <p class="mt-2"><a href="mailto:media@fairoaksincome.example" style="color: var(--color-accent-secondary)">media@fairoaksincome.example</a></p>
+      </div>
+      <div class="card p-6">
+        <h4 class="h-3 font-serif">Registered Office</h4>
+        <p class="text-sm mt-3 leading-relaxed">
+          Fair Oaks Income Limited<br/>
+          [Registered office address]<br/>
+          Guernsey, Channel Islands
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+</template>
+
+<template id="page-faqs">
+<section class="py-16 lg:py-20" style="background: var(--color-white); border-bottom: 1px solid var(--color-grey-stone)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.25em]" style="color: var(--color-accent-secondary)">FAQs</p>
+    <h1 class="h-display font-serif mt-3">Frequently asked questions.</h1>
+    <p class="mt-5 max-w-2xl leading-relaxed">
+      A primer on the fund's structure, investment approach, distributions and shareholder
+      services.
+    </p>
+  </div>
+</section>
+<section class="py-16" style="background: var(--color-light-grey)">
+  <div class="max-w-3xl mx-auto px-5 lg:px-8 space-y-3" id="faq-list"></div>
+</section>
+</template>
+
+<template id="page-key-risks">
+<section class="py-8" style="background: #F4ECDF; border-top: 3px solid #C68B5C; border-bottom: 1px solid #E4D4BD;">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 flex items-start gap-4">
+    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full shrink-0 mt-0.5" style="background: #C68B5C; color: #fff;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    </span>
+    <div>
+      <h2 class="h-3 font-serif" style="color:#6B3E1E;">Regulatory warning</h2>
+      <p class="text-sm mt-2 leading-relaxed" style="color:#5A3E22;">
+        Investment in the fund involves significant risk and is intended for professional and
+        institutional investors only. Capital is at risk; past performance is not indicative
+        of future results. Read the prospectus and Key Information Document before investing.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="py-16 lg:py-20" style="background: var(--color-white)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <p class="text-xs uppercase tracking-[0.25em]" style="color: var(--color-accent-secondary)">Key Risks</p>
+    <h1 class="h-display font-serif mt-3">Understanding the risks.</h1>
+    <p class="mt-5 max-w-2xl leading-relaxed">
+      The principal risks of an investment in Fair Oaks Income Fund are summarised below.
+      The list is not exhaustive — please refer to the prospectus for a complete description.
+    </p>
+  </div>
+</section>
+<section class="pb-20" style="background: var(--color-white)">
+  <div class="max-w-3xl mx-auto px-5 lg:px-8 space-y-3" id="risks-list"></div>
+</section>
+</template>
+
+<!-- ========== APP SCRIPT ========== -->
+<script>
+(function () {
+  // Year stamp
+  const yEl = document.getElementById('year');
+  if (yEl) yEl.textContent = new Date().getFullYear();
+
+  // Disclaimer gate
+  const ACCEPT_KEY = 'fofair_disclaimer_accepted';
+  const overlay = document.getElementById('disclaimer');
+  const site = document.getElementById('site');
+  const accepted = sessionStorage.getItem(ACCEPT_KEY) === '1';
+  if (!accepted) {
+    overlay.classList.remove('hidden');
+    overlay.classList.add('flex');
+    site.classList.add('blurred');
+  }
+  document.getElementById('accept-btn').addEventListener('click', () => {
+    sessionStorage.setItem(ACCEPT_KEY, '1');
+    overlay.classList.add('hidden');
+    overlay.classList.remove('flex');
+    site.classList.remove('blurred');
+  });
+  document.getElementById('reject-btn').addEventListener('click', () => {
+    window.location.href = 'https://www.google.com';
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.addEventListener('click', e => { if (e.target.tagName === 'A') mobileMenu.classList.add('hidden'); });
+
+  // Router
+  const outlet = document.getElementById('outlet');
+  const routes = {
+    '/': 'page-home',
+    '/about': 'page-about',
+    '/reports': 'page-reports',
+    '/documentation': 'page-documentation',
+    '/media': 'page-media',
+    '/contact': 'page-contact',
+    '/faqs': 'page-faqs',
+    '/key-risks': 'page-key-risks',
+  };
+
+  function getRoute() {
+    const h = location.hash.replace(/^#/, '') || '/';
+    return routes[h] ? h : '/';
+  }
+
+  function setActiveNav(route) {
+    document.querySelectorAll('[data-route]').forEach(a => {
+      a.classList.toggle('active', a.dataset.route === route);
+    });
+  }
+
+  function render() {
+    const route = getRoute();
+    const tplId = routes[route];
+    const tpl = document.getElementById(tplId);
+    outlet.innerHTML = '';
+    const node = tpl.content.cloneNode(true);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'page';
+    wrapper.appendChild(node);
+    outlet.appendChild(wrapper);
+    setActiveNav(route);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Page-specific bindings
+    if (route === '/reports') initReports();
+    if (route === '/media') initMedia();
+    if (route === '/faqs') initFaqs();
+    if (route === '/key-risks') initRisks();
+    if (route === '/contact') initContact();
+
+    initReveal();
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+
+  // Reveal-on-scroll
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  }
+
+  // ----- Reports data + filtering -----
+  const REPORTS = [
+    { type:'factsheet', year:'2025', title:'Monthly Factsheet — March 2025', date:'31 Mar 2025' },
+    { type:'factsheet', year:'2025', title:'Monthly Factsheet — February 2025', date:'28 Feb 2025' },
+    { type:'factsheet', year:'2025', title:'Monthly Factsheet — January 2025', date:'31 Jan 2025' },
+    { type:'annual',    year:'2024', title:'Annual Report & Audited Accounts 2024', date:'30 Apr 2024' },
+    { type:'interim',   year:'2024', title:'Interim Report — H1 2024', date:'30 Sep 2024' },
+    { type:'factsheet', year:'2024', title:'Monthly Factsheet — December 2024', date:'31 Dec 2024' },
+    { type:'circular',  year:'2024', title:'Notice of Annual General Meeting 2024', date:'15 Jul 2024' },
+    { type:'annual',    year:'2023', title:'Annual Report & Audited Accounts 2023', date:'30 Apr 2023' },
+    { type:'interim',   year:'2023', title:'Interim Report — H1 2023', date:'30 Sep 2023' },
+    { type:'factsheet', year:'2023', title:'Monthly Factsheet — December 2023', date:'31 Dec 2023' },
+    { type:'annual',    year:'2022', title:'Annual Report & Audited Accounts 2022', date:'30 Apr 2022' },
+    { type:'circular',  year:'2022', title:'Shareholder Circular — June 2022', date:'01 Jun 2022' },
+  ];
+  let reportFilter = { type:'all', year:'all' };
+  function initReports() {
+    const list = document.getElementById('reports-list');
+    function paint() {
+      list.innerHTML = REPORTS
+        .filter(r => (reportFilter.type==='all' || r.type===reportFilter.type))
+        .filter(r => (reportFilter.year==='all' || r.year===reportFilter.year))
+        .map(r => `
+          <a href="#" class="card p-5 flex items-center gap-4">
+            <div class="w-11 h-12 rounded-md flex items-center justify-center shrink-0" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[11px] uppercase tracking-wider" style="color: var(--color-accent-secondary)">${r.type}</div>
+              <div class="font-serif text-base mt-0.5 truncate" style="color: var(--color-navy)">${r.title}</div>
+              <div class="text-xs mt-1 mono" style="color: var(--color-text-muted)">${r.date}</div>
+            </div>
+            <span style="color: var(--color-accent-secondary)">↓</span>
+          </a>`).join('') || `<div class="text-sm" style="color: var(--color-text-muted)">No documents match the selected filters.</div>`;
+    }
+    document.querySelectorAll('[data-filter-type]').forEach(b => b.addEventListener('click', () => {
+      reportFilter.type = b.dataset.filterType;
+      document.querySelectorAll('[data-filter-type]').forEach(x => x.classList.toggle('active', x===b));
+      paint();
+    }));
+    document.querySelectorAll('[data-filter-year]').forEach(b => b.addEventListener('click', () => {
+      reportFilter.year = b.dataset.filterYear;
+      document.querySelectorAll('[data-filter-year]').forEach(x => x.classList.toggle('active', x===b));
+      paint();
+    }));
+    paint();
+  }
+
+  // ----- Media -----
+  const MEDIA = [
+    { tag:'nav',      date:'15 Apr 2025', title:'NAV Announcement — MAR-25', excerpt:'Monthly NAV per ordinary share announcement.' },
+    { tag:'dividend', date:'02 Apr 2025', title:'Q1 2025 Dividend Declaration', excerpt:'Declaration of quarterly dividend to ordinary shareholders.' },
+    { tag:'press',    date:'18 Mar 2025', title:'Fair Oaks — Annual Results', excerpt:'Audited results for the year ended 31 December 2024.' },
+    { tag:'nav',      date:'15 Mar 2025', title:'NAV Announcement — FEB-25', excerpt:'Monthly NAV per ordinary share announcement.' },
+    { tag:'rns',      date:'04 Mar 2025', title:'Total Voting Rights', excerpt:'Disclosure of issued share capital and total voting rights.' },
+    { tag:'dividend', date:'05 Feb 2025', title:'Q4 2024 Dividend Declaration', excerpt:'Declaration of quarterly dividend to ordinary shareholders.' },
+    { tag:'press',    date:'14 Jan 2025', title:'Manager Commentary — Q4 2024', excerpt:'Quarterly investment review and outlook from the manager.' },
+    { tag:'nav',      date:'15 Jan 2025', title:'NAV Announcement — DEC-24', excerpt:'Monthly NAV per ordinary share announcement.' },
+  ];
+  function initMedia() {
+    const list = document.getElementById('media-list');
+    function paint(filter='all') {
+      list.innerHTML = MEDIA
+        .filter(m => filter==='all' || m.tag===filter)
+        .map(m => `
+          <a href="#" class="card p-7 lg:p-8 pb-9 lg:pb-10 block">
+            <div class="aspect-[16/9] rounded-lg mb-6" style="background: linear-gradient(135deg, var(--color-pale-blue-gray), var(--color-light-blue))"></div>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full" style="background: var(--color-pale-blue-gray); color: var(--color-navy)">${m.tag}</span>
+              <span class="text-xs mono" style="color: var(--color-text-muted)">${m.date}</span>
+            </div>
+            <h3 class="h-3 font-serif mt-5">${m.title}</h3>
+            <p class="text-sm mt-4 leading-relaxed">${m.excerpt}</p>
+            <span class="inline-flex items-center gap-1 text-sm mt-6 font-medium" style="color: var(--color-accent-secondary)">Read announcement →</span>
+          </a>`).join('') || `<div class="text-sm" style="color: var(--color-text-muted)">No items match.</div>`;
+    }
+    document.querySelectorAll('[data-media-filter]').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('[data-media-filter]').forEach(x => x.classList.toggle('active', x===b));
+      paint(b.dataset.mediaFilter);
+    }));
+    paint();
+  }
+
+  // ----- FAQs -----
+  const FAQS = [
+    ['What is Fair Oaks Income Fund?', 'Fair Oaks Income Limited is a closed-ended investment company listed on the Specialist Fund Segment of the London Stock Exchange. It provides exposure to portfolios of senior secured corporate loans.'],
+    ['What is the investment objective?', 'The objective is to generate stable returns, with the potential for capital appreciation, by way of quarterly distributions to ordinary shareholders.'],
+    ['Where is the fund domiciled?', 'The fund is incorporated in Guernsey and regulated by the Guernsey Financial Services Commission.'],
+    ['How often are distributions paid?', 'Distributions are paid quarterly, subject to board approval. See the latest factsheet and announcements for current information.'],
+    ['How can I buy or sell shares?', 'Ordinary shares are admitted to trading on the London Stock Exchange. Investors typically transact through their stockbroker or platform.'],
+    ['Who manages the fund?', 'The fund is managed by an experienced credit team focused on senior secured corporate loans. See the About page for further details.'],
+    ['Where can I find the prospectus and KID?', 'The prospectus and Key Information Document are available from the Documentation page.'],
+    ['Is this fund suitable for retail investors?', 'The fund is intended for professional and institutional investors. Retail investors should consult an authorised financial adviser before investing.'],
+  ];
+  function initFaqs() {
+    const list = document.getElementById('faq-list');
+    list.innerHTML = FAQS.map(([q,a]) => `
+      <details class="card p-5">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="h-3 font-serif" style="font-size:1.05rem">${q}</span>
+          <svg class="chev shrink-0 mt-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent-secondary)"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <p class="text-sm mt-4 leading-relaxed">${a}</p>
+      </details>`).join('');
+  }
+
+  // ----- Key Risks -----
+  const RISKS = [
+    ['Capital at risk', 'The value of an investment in the fund can go down as well as up, and investors may not get back the full amount invested.'],
+    ['Credit risk', 'The fund is exposed to the creditworthiness of corporate borrowers. Defaults may reduce income and capital values.'],
+    ['Concentration risk', 'Although diversified, the fund is concentrated in senior secured corporate loans and may be impacted by sector-specific events.'],
+    ['Liquidity risk', 'Underlying loans may be less liquid than publicly traded securities, which can affect the realisation of asset values.'],
+    ['Market risk', 'Changes in interest rates, credit spreads and broader market conditions may affect returns.'],
+    ['Currency risk', 'The fund may hold assets denominated in currencies other than the share class currency. Exchange-rate movements may impact value.'],
+    ['Leverage risk', 'Leverage employed within underlying structures can amplify gains and losses.'],
+    ['Regulatory & tax risk', 'Changes in laws, regulations or tax treatment may adversely affect the fund or its investors.'],
+  ];
+  function initRisks() {
+    const list = document.getElementById('risks-list');
+    list.innerHTML = RISKS.map(([t,d]) => `
+      <details class="card p-5">
+        <summary class="flex items-start justify-between gap-6">
+          <span class="h-3 font-serif" style="font-size:1.05rem">${t}</span>
+          <svg class="chev shrink-0 mt-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent-secondary)"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <p class="text-sm mt-4 leading-relaxed">${d}</p>
+      </details>`).join('');
+  }
+
+  // ----- Contact -----
+  function initContact() {
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const email = (fd.get('email')||'').toString();
+      const name = (fd.get('name')||'').toString();
+      const msg = (fd.get('message')||'').toString();
+      status.classList.remove('hidden');
+      if (!name || !email || !msg || !/^\S+@\S+\.\S+$/.test(email)) {
+        status.textContent = 'Please complete all required fields with a valid email.';
+        status.style.color = '#7a1d1d';
+        return;
+      }
+      status.textContent = 'Thank you — your enquiry has been received. The team will be in touch.';
+      status.style.color = 'var(--color-navy)';
+      form.reset();
+    });
+  }
+})();
+</script>
+</body>
+</html>
